@@ -8,6 +8,10 @@ public final class GameMother {
 		return new Game(UUID.randomUUID());
 	}
 
+	public static Game create(UUID id) {
+		return new Game(id);
+	}
+
 	private GameMother() {
 
 	}

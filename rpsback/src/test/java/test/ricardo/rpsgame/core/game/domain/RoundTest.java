@@ -36,9 +36,19 @@ class RoundTest {
 	}
 
 	@Test
-	void testShowThrowIllegalRoundExceptionWhenMovesNull() {
+	void testThrowIllegalRoundExceptionWhenMovesNull() {
 		Assertions.assertThrows(InvalidRoundException.class, () -> RoundMother.create(null, Move.ROCK));
 		Assertions.assertThrows(InvalidRoundException.class, () -> RoundMother.create(Move.SCICCORS, null));
 
 	}
+
+	@Test
+	void testCreateFromCommand() {
+		PlayRoundRandomCommand command = PlayRoundRandomCommandMother.create();
+
+		Round round = Round.create(command);
+
+		Assertions.assertEquals(command.playerOneMove(), round.getPlayerOneMove());
+	}
+
 }

@@ -29,12 +29,19 @@ public class Game extends Entity<UUID> {
 	}
 
 	public void playRound(Round round) {
+		validateStatus();
 		addRound(round);
 		winner = round.setWinner();
 		if (isThereAWinner()) {
 			finish();
 		}
 
+	}
+
+	private void validateStatus() {
+		if (Status.ONGOING != getStatus()) {
+			throw new IncorrectGameStatusException("Game is not in status " + Status.ONGOING);
+		}
 	}
 
 	private boolean isThereAWinner() {
