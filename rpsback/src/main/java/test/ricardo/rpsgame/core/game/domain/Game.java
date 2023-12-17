@@ -1,5 +1,6 @@
 package test.ricardo.rpsgame.core.game.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,16 +17,19 @@ public class Game extends Entity<UUID> {
 	private Winner winner;
 	@Getter
 	private Status status;
+	@Getter
+	private final LocalDateTime createdOn;
 
 	public static Game create(@NonNull UUID id) {
-		return new Game(id);
+		return new Game(id, LocalDateTime.now());
 	}
 
-	public Game(UUID id) {
+	public Game(UUID id, LocalDateTime createdOn) {
 		super(id);
 		rounds = new ArrayList<>();
 		status = Status.ONGOING;
 		winner = Winner.NONE;
+		this.createdOn = createdOn;
 	}
 
 	public void playRound(Round round) {
