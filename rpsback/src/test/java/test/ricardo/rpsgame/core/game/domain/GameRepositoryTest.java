@@ -44,16 +44,29 @@ class GameRepositoryTest {
 	}
 
 	@Test
-	void testFindAllShouldReturnAllSortedByCreatedOn() {
-		List<Game> games = new ArrayList<>(List.of(GameMother.createOn(LocalDateTime.now().plusSeconds(10)),
-				GameMother.createOn(LocalDateTime.now().plusSeconds(1)),
-				GameMother.createOn(LocalDateTime.now().plusSeconds(100))));
+	void testFindAllShouldReturnAllSortedByStartedOn() {
+		List<Game> games = new ArrayList<>(List.of(GameMother.createStartedOn(LocalDateTime.now()
+				.plusSeconds(10)), GameMother.createStartedOn(
+						LocalDateTime.now()
+								.plusSeconds(1)),
+				GameMother.createStartedOn(LocalDateTime.now()
+						.plusSeconds(100))));
 		games.forEach(gameRepository::save);
 
 		List<Game> res = gameRepository.findAll();
 
-		games.sort((g1, g2) -> g1.getCreatedOn().compareTo(g2.getCreatedOn()));
+		games.sort((g1, g2) -> g1.getStartedOn()
+				.compareTo(g2.getStartedOn()));
 		Assertions.assertEquals(games, res);
+	}
+
+	@Test
+	void testSaveShouldReturnGame() {
+		Game game = GameMother.create(UUID.randomUUID());
+
+		game = gameRepository.save(game);
+
+		Assertions.assertNotNull(game);
 	}
 
 	private GameRepository create() {

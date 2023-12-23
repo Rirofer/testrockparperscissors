@@ -16,7 +16,7 @@ import test.ricardo.rpsgame.core.game.domain.GameRepository;
 @Component
 public class GameRepositoryMemory implements GameRepository {
 
-	private Map<UUID, Game> repository;
+	private final Map<UUID, Game> repository;
 
 	public GameRepositoryMemory() {
 		repository = new HashMap<>();
@@ -32,17 +32,27 @@ public class GameRepositoryMemory implements GameRepository {
 
 	@Override
 	public Game save(Game game) {
-		return repository.put(game.getId(), game);
+		repository.put(game.getId(), game);
+		return game;
 	}
 
 	@Override
 	public List<Game> findAll() {
-		return repository.entrySet().stream().map(Entry::getValue).sorted(this::sortByCreatedOn)
+		return repository.entrySet()
+				.stream()
+				.map(Entry::getValue)
+				.sorted(this::sortByStartedOn)
 				.collect(Collectors.toList());
 	}
 
-	private int sortByCreatedOn(Game game1, Game game2) {
-		return game1.getCreatedOn().compareTo(game2.getCreatedOn());
+	private int sortByStartedOn(Game game1, Game game2) {
+		return game1.getStartedOn()
+				.compareTo(game2.getStartedOn());
+	}
+
+	@Override
+	public void deleteAll() {
+		repository.clear();
 	}
 
 }

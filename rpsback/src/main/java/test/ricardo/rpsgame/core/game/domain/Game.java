@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import lombok.Getter;
 import lombok.NonNull;
@@ -12,24 +14,24 @@ import test.ricardo.rpsgame.core.shared.domain.Entity;
 
 public class Game extends Entity<UUID> {
 
-	private List<Round> rounds;
+	private final List<Round> rounds;
 	@Getter
 	private Winner winner;
 	@Getter
 	private Status status;
 	@Getter
-	private final LocalDateTime createdOn;
+	private final LocalDateTime startedOn;
 
 	public static Game create(@NonNull UUID id) {
-		return new Game(id, LocalDateTime.now());
+		return new Game(id, LocalDateTime.now(), new ArrayList<>(), Status.ONGOING, Winner.NONE);
 	}
 
-	public Game(UUID id, LocalDateTime createdOn) {
+	public Game(UUID id, LocalDateTime startedOn, List<Round> rounds, Status status, Winner winner) {
 		super(id);
-		rounds = new ArrayList<>();
-		status = Status.ONGOING;
-		winner = Winner.NONE;
-		this.createdOn = createdOn;
+		this.rounds = rounds;
+		this.status = status;
+		this.winner = winner;
+		this.startedOn = startedOn;
 	}
 
 	public void playRound(Round round) {
@@ -85,6 +87,12 @@ public class Game extends Entity<UUID> {
 
 	public static enum Status {
 		ONGOING, FINIHSED;
+
+		public static String toStringValues() {
+			return Stream.of(Status.values())
+					.map(Status::name)
+					.collect(Collectors.joining(","));
+		}
 	}
 
 }

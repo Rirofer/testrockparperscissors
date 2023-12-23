@@ -11,7 +11,7 @@ public abstract class Entity<T> {
 
 	@Getter
 	private final T id;
-	private final List<DomainEvent> domainEvents;
+	private final transient List<DomainEvent> domainEvents;
 
 	protected Entity(@NonNull T id) {
 		this.id = id;

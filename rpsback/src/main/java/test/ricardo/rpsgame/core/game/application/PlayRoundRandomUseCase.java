@@ -11,8 +11,8 @@ import test.ricardo.rpsgame.core.shared.application.NotFoundException;
 @Slf4j
 public class PlayRoundRandomUseCase {
 
-	private GameRepository gameRepository;
-	private DomainEventPublisher domainEventPublisher;
+	private final GameRepository gameRepository;
+	private final DomainEventPublisher domainEventPublisher;
 
 	public PlayRoundRandomUseCase(GameRepository gameRepository, DomainEventPublisher domainEventPublisher) {
 		this.gameRepository = gameRepository;

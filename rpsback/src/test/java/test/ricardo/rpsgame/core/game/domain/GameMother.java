@@ -1,20 +1,28 @@
 package test.ricardo.rpsgame.core.game.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
+import test.ricardo.rpsgame.core.game.domain.Game.Status;
 
 public final class GameMother {
 
 	public static Game create() {
-		return createOn(LocalDateTime.now());
+		return createStartedOn(LocalDateTime.now());
 	}
 
 	public static Game create(UUID id) {
-		return new Game(id, LocalDateTime.now());
+		return new Game(id, LocalDateTime.now(), new ArrayList<>(), Status.ONGOING, Winner.NONE);
 	}
 
-	public static Game createOn(LocalDateTime createdOn) {
-		return new Game(UUID.randomUUID(), createdOn);
+	public static Game createStartedOn(LocalDateTime createdOn) {
+		return new Game(UUID.randomUUID(), createdOn, new ArrayList<>(), Status.ONGOING, Winner.NONE);
+	}
+
+	public static Game createWithRounds(List<Round> rounds) {
+		return new Game(UUID.randomUUID(), LocalDateTime.now(), rounds, Status.ONGOING, Winner.NONE);
 	}
 
 	private GameMother() {

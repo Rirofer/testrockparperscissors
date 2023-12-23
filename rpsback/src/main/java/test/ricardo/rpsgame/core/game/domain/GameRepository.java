@@ -11,4 +11,6 @@ public interface GameRepository {
 	Game save(Game game);
 
 	List<Game> findAll();
+	
+	void deleteAll();
 }

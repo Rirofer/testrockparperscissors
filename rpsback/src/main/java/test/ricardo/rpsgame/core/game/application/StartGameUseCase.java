@@ -9,7 +9,7 @@ import test.ricardo.rpsgame.core.game.domain.GameRepository;
 @Slf4j
 public class StartGameUseCase {
 
-	private GameRepository gameRepository;
+	private final GameRepository gameRepository;
 
 	public StartGameUseCase(GameRepository gameRepository) {
 		this.gameRepository = gameRepository;
