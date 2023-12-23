@@ -25,6 +25,11 @@ public final class GameMother {
 		return new Game(UUID.randomUUID(), LocalDateTime.now(), rounds, Status.ONGOING, Winner.NONE);
 	}
 
+	public static Game createFinished() {
+		return new Game(UUID.randomUUID(), LocalDateTime.now(),
+				new ArrayList<>(List.of(RoundMother.createPlayerOneWins())), Status.FINIHSED, Winner.PLAYER1);
+	}
+
 	private GameMother() {
 
 	}

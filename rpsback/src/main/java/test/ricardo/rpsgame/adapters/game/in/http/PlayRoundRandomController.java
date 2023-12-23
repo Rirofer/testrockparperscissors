@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import test.ricardo.rpsgame.adapters.game.in.http.assembler.GameDTOAssembler;
 import test.ricardo.rpsgame.adapters.game.in.http.dto.GameDTO;
 import test.ricardo.rpsgame.adapters.game.in.http.dto.PlayRoundRandomCommandDTO;
@@ -30,7 +31,7 @@ public class PlayRoundRandomController {
 
 	@PostMapping(value = "/{gameId}" + ApiPaths.PLAY_ROUND_RANDOM)
 	public ResponseEntity<GameDTO> playRoundRandom(@PathVariable UUID gameId,
-			@RequestBody PlayRoundRandomCommandDTO commandDTO) {
+			@Valid @RequestBody PlayRoundRandomCommandDTO commandDTO) {
 		PlayRoundRandomCommand command = new PlayRoundRandomCommand(gameId, commandDTO.playerOneMove());
 		Game game = useCase.playRound(command);
 		GameDTO dto = assembler.toModel(game);

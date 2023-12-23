@@ -32,7 +32,7 @@ class PlayRoundRandomUseCaseComponentTest extends MockMvcDocumentationTestBase {
 	}
 
 	@Test
-	void testPlayRoundRandom() throws Exception {
+	void testPlayRoundRandomOngoingGame() throws Exception {
 		Game game = GameMother.create();
 		gameRepository.save(game);
 		PlayRoundRandomCommandDTO commandDTO = PlayRoundRandomCommandDTOMother.create(Move.PAPER);
@@ -46,4 +46,29 @@ class PlayRoundRandomUseCaseComponentTest extends MockMvcDocumentationTestBase {
 				.andDo(document("play-random-round"));
 	}
 
+	@Test
+	void testPlayRoundRandomFinishedGameShouldReturnConflict() throws Exception {
+		Game game = GameMother.createFinished();
+		gameRepository.save(game);
+		PlayRoundRandomCommandDTO commandDTO = PlayRoundRandomCommandDTOMother.create(Move.PAPER);
+
+		mockMvc.perform(post(ApiPaths.GAMES + "/" + game.getId() + ApiPaths.PLAY_ROUND_RANDOM)
+				.content(JsonSerializer.toJson(commandDTO))
+				.contentType(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isConflict());
+	}
+
+	@Test
+	void testPlayRoundRandomWithNullMoveShouldReturnBadRequest() throws Exception {
+		Game game = GameMother.create();
+		gameRepository.save(game);
+		PlayRoundRandomCommandDTO commandDTO = PlayRoundRandomCommandDTOMother.create(null);
+
+		mockMvc.perform(post(ApiPaths.GAMES + "/" + game.getId() + ApiPaths.PLAY_ROUND_RANDOM)
+				.content(JsonSerializer.toJson(commandDTO))
+				.contentType(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isBadRequest());
+	}
 }
