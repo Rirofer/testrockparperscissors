@@ -1,0 +1,13 @@
+= Rock, paper, scissors REST API
+:toc: left
+:toclevels: 4
+
+[[overview]]
+= Overview
+
+Rock, paper, scissors REST API documentation.
+
+[[resources]]
+= Resources
+
+include::game.adoc[]

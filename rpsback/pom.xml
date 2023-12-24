@@ -16,6 +16,7 @@
 	<description>Rock paper scissors game</description>
 	<properties>
 		<java.version>17</java.version>
+		<spring.rest.docs.version>3.0.1</spring.rest.docs.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -73,6 +74,7 @@
 				</configuration>
 			</plugin>
 
+
 			<!-- REST API documentation -->
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
@@ -95,10 +97,34 @@
 					<dependency>
 						<groupId>org.springframework.restdocs</groupId>
 						<artifactId>spring-restdocs-asciidoctor</artifactId>
-						<version>{project-version}</version>
+						<version>${spring.rest.docs.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.outputDirectory}/static/doc</outputDirectory>
+							<resources>
+								<resource>
+									<directory>
+										${project.build.directory}/generated-docs</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 

@@ -1,0 +1,49 @@
+[[game_resource]]
+== Game Resource
+
+Resource that represents a rock, paper, scissors game.
+
+[[game_fields]]
+=== Game fields
+
+include::{snippets}/find-game-by-id/response-fields.adoc[]
+
+==== Round fields
+
+include::{snippets}/find-game-by-id/response-fields-rounds.adoc[]
+
+[[game_links]]
+=== Game links
+
+include::{snippets}/find-game-by-id/links.adoc[]
+
+[[game_find_by_id]]
+=== Find Game by id
+
+include::{snippets}/find-game-by-id/http-request.adoc[]
+include::{snippets}/find-game-by-id/http-response.adoc[]
+
+
+[[play-random-round]]
+=== Play random round
+
+Play a game round with player two move generated randomly. It returns the game resource updated.
+
+include::{snippets}/play-random-round/http-request.adoc[]
+include::{snippets}/play-random-round/http-response.adoc[]
+
+[[game_collection_resource]]
+== Game Collection Resource
+
+Contains a collection of game resources
+
+include::{snippets}/find-all-games/http-request.adoc[]
+include::{snippets}/find-all-games/http-response.adoc[]
+
+[[start_game]]
+=== Start Game
+
+Starts a new game
+
+include::{snippets}/start-game/http-request.adoc[]
+include::{snippets}/start-game/http-response.adoc[]
