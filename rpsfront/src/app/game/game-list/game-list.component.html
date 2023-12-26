@@ -1,0 +1,20 @@
+<div id="games">
+  <h2>Games</h2>
+  <button (click)="startGame()">Start game</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Winner</th>
+        <th>Started On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of games.resources">
+        <td>{{game.status}}</td>
+        <td>{{game.winner}}</td>
+        <td>{{game.startedOn}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
