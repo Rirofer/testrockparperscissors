@@ -12,6 +12,13 @@ There are three main packages:
 - **core**: Contains the application core. There is a package per each feature (aggregate) in the project. Within each
   feature package, there is an application package and a domain package.
   
+The model has been designed using DDD tactical patterns:
+
+- Aggregate
+- Entity
+- Value Object
+- Repository
+- Domain Events
   
 ## Requirements
 

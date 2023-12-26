@@ -3,6 +3,7 @@ package test.ricardo.rpsgame.adapters.game.in.http;
 import java.util.List;
 
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.server.core.EmbeddedWrapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class FindAllGamesController {
 		this.assembler = assembler;
 	}
 
-	@GetMapping
+	@GetMapping(produces = MediaTypes.HAL_FORMS_JSON_VALUE)
 	public ResponseEntity<CollectionModel<EmbeddedWrapper>> findAll() {
 		List<Game> games = useCase.findAll();
 		CollectionModel<EmbeddedWrapper> collectionModel = assembler.toCollectionModel(games);

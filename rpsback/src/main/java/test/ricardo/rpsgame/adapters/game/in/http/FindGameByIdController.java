@@ -2,6 +2,7 @@ package test.ricardo.rpsgame.adapters.game.in.http;
 
 import java.util.UUID;
 
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ public class FindGameByIdController {
 		this.assembler = assembler;
 	}
 
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/{id}", produces = MediaTypes.HAL_FORMS_JSON_VALUE)
 	public ResponseEntity<GameDTO> findById(@PathVariable UUID id) {
 		Game game = useCase.findById(id);
 		GameDTO dto = assembler.toModel(game);

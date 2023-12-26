@@ -1,5 +1,6 @@
 package test.ricardo.rpsgame.adapters.game.in.http;
 
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class StartGameController {
 		this.assembler = assembler;
 	}
 
-	@PostMapping
+	@PostMapping(produces = MediaTypes.HAL_FORMS_JSON_VALUE)
 	public ResponseEntity<GameDTO> startGame() {
 		Game game = useCase.start();
 		GameDTO dto = assembler.toModel(game);

@@ -6,7 +6,7 @@ public enum Move {
 
 		@Override
 		boolean beats(Move move) {
-			return SCICCORS == move;
+			return SCISSORS == move;
 		}
 
 	},
@@ -18,7 +18,7 @@ public enum Move {
 		}
 
 	},
-	SCICCORS {
+	SCISSORS {
 
 		@Override
 		boolean beats(Move move) {

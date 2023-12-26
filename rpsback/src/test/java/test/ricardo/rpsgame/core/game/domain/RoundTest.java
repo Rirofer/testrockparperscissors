@@ -7,13 +7,13 @@ class RoundTest {
 
 	@Test
 	void testRockBeatsSciccors() {
-		Round round = RoundMother.create(Move.ROCK, Move.SCICCORS);
+		Round round = RoundMother.create(Move.ROCK, Move.SCISSORS);
 		Assertions.assertEquals(Winner.PLAYER1, round.setWinner());
 	}
 
 	@Test
 	void testSciccorsBeatsPaper() {
-		Round round = RoundMother.create(Move.SCICCORS, Move.PAPER);
+		Round round = RoundMother.create(Move.SCISSORS, Move.PAPER);
 		Assertions.assertEquals(Winner.PLAYER1, round.setWinner());
 	}
 
@@ -31,14 +31,14 @@ class RoundTest {
 
 	@Test
 	void tesPlayerTwoWins() {
-		Round round = RoundMother.create(Move.SCICCORS, Move.ROCK);
+		Round round = RoundMother.create(Move.SCISSORS, Move.ROCK);
 		Assertions.assertEquals(Winner.PLAYER2, round.setWinner());
 	}
 
 	@Test
 	void testThrowIllegalRoundExceptionWhenMovesNull() {
 		Assertions.assertThrows(InvalidRoundException.class, () -> RoundMother.create(null, Move.ROCK));
-		Assertions.assertThrows(InvalidRoundException.class, () -> RoundMother.create(Move.SCICCORS, null));
+		Assertions.assertThrows(InvalidRoundException.class, () -> RoundMother.create(Move.SCISSORS, null));
 
 	}
 

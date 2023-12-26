@@ -2,6 +2,7 @@ package test.ricardo.rpsgame.adapters.game.in.http;
 
 import java.util.UUID;
 
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +30,7 @@ public class PlayRoundRandomController {
 		this.assembler = assembler;
 	}
 
-	@PostMapping(value = "/{gameId}" + ApiPaths.PLAY_ROUND_RANDOM)
+	@PostMapping(value = "/{gameId}" + ApiPaths.PLAY_ROUND_RANDOM, produces = MediaTypes.HAL_FORMS_JSON_VALUE)
 	public ResponseEntity<GameDTO> playRoundRandom(@PathVariable UUID gameId,
 			@Valid @RequestBody PlayRoundRandomCommandDTO commandDTO) {
 		PlayRoundRandomCommand command = new PlayRoundRandomCommand(gameId, commandDTO.playerOneMove());
