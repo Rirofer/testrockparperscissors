@@ -53,8 +53,9 @@ public class CollectionGameDTOAssembler {
 		return Affordances.of(self)
 				.afford(HttpMethod.PUT)
 				.andAfford(HttpMethod.POST)
-				.withName(START_GAME_AFFORDANCE)
 				.withTarget(startGameLink())
+				.withName(START_GAME_AFFORDANCE)
+				.withOutput(GameDTO.class)
 				.toLink();
 	}
 

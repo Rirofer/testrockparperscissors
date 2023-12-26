@@ -25,10 +25,10 @@ class StartGameUseCaseComponentTest extends MockMvcDocumentationTestBase {
 
 	@Test
 	void testStartGame() throws Exception {
-		mockMvc.perform(post(ApiPaths.GAMES))
+		mockMvc.perform(post(ApiPaths.START_GAME))
 				.andDo(print())
-				.andDo(document("start-game"))
-				.andExpect(status().isOk());
+				.andExpect(status().isOk())
+				.andDo(document("start-game"));
 
 		Assertions.assertEquals(1, gameRepository.findAll()
 				.size());

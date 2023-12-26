@@ -22,6 +22,8 @@ import test.ricardo.rpsgame.core.game.domain.GameRepository;
 
 class FindAllGamesUseCaseComponentTest extends MockMvcDocumentationTestBase {
 
+	private static final String START_GAME_PATH = "._templates." + CollectionGameDTOAssembler.START_GAME_AFFORDANCE;
+
 	@Autowired
 	private GameRepository gameRepository;
 
@@ -39,6 +41,9 @@ class FindAllGamesUseCaseComponentTest extends MockMvcDocumentationTestBase {
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$._embedded." + CollectionGameDTOAssembler.EMBEDDED_REL, hasSize(games.size())))
+				.andExpect(jsonPath(START_GAME_PATH).exists())
+				.andExpect(jsonPath(START_GAME_PATH + ".target").exists())
+				.andExpect(jsonPath(START_GAME_PATH + ".method").value("POST"))
 				.andDo(document("find-all-games"));
 	}
 
@@ -57,5 +62,5 @@ class FindAllGamesUseCaseComponentTest extends MockMvcDocumentationTestBase {
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$._embedded." + CollectionGameDTOAssembler.EMBEDDED_REL, hasSize(0)));
 	}
-	
+
 }

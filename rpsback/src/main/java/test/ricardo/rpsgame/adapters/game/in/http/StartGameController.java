@@ -12,7 +12,7 @@ import test.ricardo.rpsgame.core.game.application.StartGameUseCase;
 import test.ricardo.rpsgame.core.game.domain.Game;
 
 @RestController
-@RequestMapping(ApiPaths.GAMES)
+@RequestMapping(ApiPaths.START_GAME)
 public class StartGameController {
 
 	private final StartGameUseCase useCase;
