@@ -77,11 +77,11 @@ describe('GamesService tests', () => {
     expect(game.getLink('self')).toBeDefined();
   }
 
-  it('#onGameStarted should return the latest started game', () => {
+  it('#onGameSelected should return the latest started game', () => {
     const gameCollectionResource = toGames(GAMES, resourceAdapter);
     gamesService.startGame(gameCollectionResource).subscribe(game => expect(game).toBeDefined());
 
-    gamesService.onGameStarted().subscribe(game => expect(game).toBeDefined());
+    gamesService.onGameSelected().subscribe(game => expect(game).toBeDefined());
 
     const startGameCommand = gameCollectionResource.getCommand(START_GAME_COMMAND);
     expect(startGameCommand).toBeDefined();

@@ -7,8 +7,9 @@ export class Game extends Resource {
     readonly winner: string;
     readonly startedOn: Date;
     readonly rounds: Array<Round>;
+    readonly finished: boolean;
 
-    constructor(status: string, winner: string, startedOn: Date, rounds: Array<Round>, 
+    constructor(status: string, winner: string, startedOn: Date, rounds: Array<Round>,
         links: Map<string, Link>, commands: Map<string, Command>) {
         super(links, commands);
         this.status = status;
@@ -16,5 +17,6 @@ export class Game extends Resource {
         this.status = status;
         this.startedOn = startedOn;
         this.rounds = rounds;
+        this.finished = 'FINISHED' === status;
     }
 }

@@ -183,3 +183,46 @@ export const GAME = {
     }
   }
 };
+
+export const FINISHED_GAME = {
+  "id": "5ae2e358-95bb-4ff1-b17c-7e5c43d78a44",
+  "rounds": [
+    {
+      "playerOneMove": "PAPER",
+      "playerTwoMove": "ROCK",
+      "randomPlayerTwo": true
+    }
+  ],
+  "winner": "PLAYER1",
+  "status": "FINISHED",
+  "startedOn": "2023-12-25T12:03:58.804684297",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/games/5ae2e358-95bb-4ff1-b17c-7e5c43d78a44"
+    }
+  },
+  "_templates": {
+    "default": {
+      "method": "PUT",
+      "properties": []
+    },
+    "play-random-round-command": {
+      "method": "POST",
+      "properties": [
+        {
+          "name": "playerOneMove",
+          "readOnly": true,
+          "required": true,
+          "options": {
+            "inline": [
+              "ROCK",
+              "PAPER",
+              "SCISSORS"
+            ]
+          }
+        }
+      ],
+      "target": "http://localhost:8080/api/games/5ae2e358-95bb-4ff1-b17c-7e5c43d78a44/play/round/random/command"
+    }
+  }
+};

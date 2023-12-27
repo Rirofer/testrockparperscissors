@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Game, GamesService, Round} from "../shared";
+import {Game, GamesService} from "../shared";
 import {Command} from "../../rest";
 
 @Component({
@@ -23,13 +23,13 @@ export class GameRandomComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.gamesService.onGameStarted().subscribe(g => this.setCurrentGame(g));
+    this.gamesService.onGameSelected().subscribe(g => this.setCurrentGame(g));
   }
 
   private setCurrentGame(game: Game) {
     this.currentGame = game;
     this.playRandomRoundCommand = game.getCommand('play-random-round-command');
-    this.canPlayRound = this.currentGame.status == 'ONGOING';
+    this.canPlayRound = !this.currentGame.finished;
     const opts = this.playRandomRoundCommand?.getPropertyOptions('playerOneMove');
     if (typeof opts != 'undefined') {
       this.moveOptions = opts;

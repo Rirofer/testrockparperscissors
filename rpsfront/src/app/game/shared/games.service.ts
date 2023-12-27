@@ -11,12 +11,12 @@ export class GamesService {
 
   private readonly resourceAdapter: ResourceAdapter;
   private readonly httpClient: HttpClient;
-  private readonly lastGameSubject: Subject<Game>;
+  private readonly selectedGameSubject: Subject<Game>;
 
   constructor(resourceAdapter: ResourceAdapter, httpClient: HttpClient) {
     this.resourceAdapter = resourceAdapter;
     this.httpClient = httpClient;
-    this.lastGameSubject = new Subject<Game>();
+    this.selectedGameSubject = new Subject<Game>();
   }
 
   getGames(): Observable<CollectionResource<Game>> {
@@ -35,16 +35,16 @@ export class GamesService {
 
   private toGame(resource: any): Game {
     const game = toGame(resource, this.resourceAdapter);
-    this.setLatestGame(game);
+    this.setSelectedGame(game);
     return game;
   }
 
-  private setLatestGame(game: Game) {
-    this.lastGameSubject.next(game);
+  private setSelectedGame(game: Game) {
+    this.selectedGameSubject.next(game);
   }
 
-  onGameStarted(): Observable<Game> {
-    return this.lastGameSubject;
+  onGameSelected(): Observable<Game> {
+    return this.selectedGameSubject;
   }
 
   playRandomRound(playerOneMove: string, command: Command): Observable<Game> {
