@@ -23,7 +23,7 @@ import test.ricardo.rpsgame.core.game.domain.Game;
 public class CollectionGameDTOAssembler {
 
 	public static final String EMBEDDED_REL = "games";
-	public static final String START_GAME_AFFORDANCE = "start-game";
+	public static final String START_GAME_AFFORDANCE = "start-game-command";
 
 	private final GameDTOAssembler assembler;
 

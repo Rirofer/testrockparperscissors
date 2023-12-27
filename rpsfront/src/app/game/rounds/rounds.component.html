@@ -1,0 +1,22 @@
+<table>
+  <thead>
+   <tr>
+     <th>
+        Player 1 move
+     </th>
+     <th>
+       Player 2 move
+     </th>
+     <th>
+       Player 2 random
+     </th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let round of rounds">
+      <td>{{round.playerOneMove}}</td>
+      <td>{{round.playerTwoMove}}</td>
+      <td>{{round.randomPlayerTwo}}</td>
+    </tr>
+  </tbody>
+</table>

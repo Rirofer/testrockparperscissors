@@ -1,7 +1,17 @@
-import {ResourceAdapter} from "../../rest/resource-adapter";
 import {Game} from "./game.model";
 import {Round} from "./round.model";
+import {CollectionResource, ResourceAdapter} from "../../rest";
 
+export function toGames(collectionResource: any,  resourceAdapter: ResourceAdapter): CollectionResource<Game> {
+  const links = resourceAdapter.toLinks(collectionResource);
+  const commands = resourceAdapter.toCommands(collectionResource);
+  const resources = resourceAdapter.getResources(collectionResource, 'games');
+  return new CollectionResource<Game>(toGameResources(resources, resourceAdapter), links, commands);
+}
+
+export function toGameResources(resources: Array<any>,  resourceAdapter: ResourceAdapter): Array<Game> {
+  return resources.map(r => toGame(r, resourceAdapter));
+}
 export function toGame(resource: any, resourceAdapter: ResourceAdapter): Game {
   const links = resourceAdapter.toLinks(resource);
   const commands = resourceAdapter.toCommands(resource);

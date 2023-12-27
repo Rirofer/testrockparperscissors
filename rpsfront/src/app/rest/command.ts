@@ -14,4 +14,19 @@ export class Command {
     this.properties = properties;
   }
 
+  getProperty(propName: string): Property | undefined {
+    if(typeof this.properties != 'undefined') {
+      return this.properties.find(p => p.name == propName);
+    }
+    return;
+  }
+
+  getPropertyOptions(propName: string): Array<string> {
+    const options = new Array<string>();
+    const property = this.getProperty(propName);
+    if(typeof property != 'undefined' && typeof property?.options != 'undefined') {
+      return property?.options;
+    }
+    return options;
+  }
 }
