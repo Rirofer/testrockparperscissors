@@ -19,6 +19,8 @@ The model has been designed using DDD tactical patterns:
 - Value Object
 - Repository
 - Domain Events
+
+The application exposes a REST API with HAL-FORMS hypermedia format.
   
 ## Requirements
 

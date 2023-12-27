@@ -19,7 +19,7 @@ class GameTest {
 
 		game.playRound(round);
 
-		Assertions.assertEquals(Status.FINIHSED, game.getStatus());
+		Assertions.assertEquals(Status.FINISHED, game.getStatus());
 		Assertions.assertEquals(Winner.PLAYER1, game.getWinner());
 		List<DomainEvent> domainEvents = game.getDomainEvents();
 		Assertions.assertEquals(1, domainEvents.size());

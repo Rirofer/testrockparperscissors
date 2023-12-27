@@ -55,7 +55,7 @@ public class Game extends Entity<UUID> {
 	}
 
 	private void finish() {
-		status = Status.FINIHSED;
+		status = Status.FINISHED;
 		GameFinished gameFinished = GameFinished.create(this);
 		addDomainEvent(gameFinished);
 	}
@@ -86,7 +86,7 @@ public class Game extends Entity<UUID> {
 	}
 
 	public static enum Status {
-		ONGOING, FINIHSED;
+		ONGOING, FINISHED;
 
 		public static String toStringValues() {
 			return Stream.of(Status.values())

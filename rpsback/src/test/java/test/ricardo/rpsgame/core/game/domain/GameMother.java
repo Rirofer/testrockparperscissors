@@ -27,7 +27,7 @@ public final class GameMother {
 
 	public static Game createFinished() {
 		return new Game(UUID.randomUUID(), LocalDateTime.now(),
-				new ArrayList<>(List.of(RoundMother.createPlayerOneWins())), Status.FINIHSED, Winner.PLAYER1);
+				new ArrayList<>(List.of(RoundMother.createPlayerOneWins())), Status.FINISHED, Winner.PLAYER1);
 	}
 
 	private GameMother() {
