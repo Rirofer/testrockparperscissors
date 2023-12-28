@@ -19,9 +19,17 @@ Open a browser and access the url http://localhost:4200, start a new game and pl
 
 ## Architecture decisions
 
+Although it is a simple application, the following architectural patterns have been used for the sake of demonstration.
+
 - Domain Driven Design
 - Hexagonal architecture
 - REST API
 - Angular Style Guide
 
 ## Improvements
+
+- Add persistence to the backend
+- Implement an EventStore to save domain events
+- Implement Outbox pattern to publish events reliably
+- Use Server Sent Events (or WebSockets) to send events from the backend to the frontend
+- React to domain events in the frontend, for example, refresh the game list on GameFinished event

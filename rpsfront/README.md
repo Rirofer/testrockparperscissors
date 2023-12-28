@@ -1,6 +1,6 @@
 # Rpsfront
 
-Rock, paper, scissors frontend.
+Rock, paper, scissors frontend. Simple angular project just to set an example of how to use a REST API.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
 
