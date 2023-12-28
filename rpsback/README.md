@@ -65,3 +65,7 @@ mvn test
 ## API documentation
 
 Build the jar and execute the project. The API documentation will be exposed in http://localhost:8080/doc/index.html
+
+## Metrics
+
+Spring actuator API is exposed in http://localhost:8080/actuator
