@@ -21,7 +21,14 @@ The model has been designed using DDD tactical patterns:
 - Domain Events
 
 The application exposes a REST API with HAL-FORMS hypermedia format.
-  
+
+## Technologies
+
+The backend has been built using the following technologies:
+
+- Spring Boot 3
+- Java 17
+
 ## Requirements
 
 For building and running the application you need:
