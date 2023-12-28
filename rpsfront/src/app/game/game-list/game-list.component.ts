@@ -11,6 +11,7 @@ import {CollectionResource} from "../../rest";
 export class GameListComponent implements OnInit {
 
   games: CollectionResource<Game>;
+  displayedColumns: string[] = ['status', 'winner', 'startedOn'];
   private gamesService: GamesService;
 
   constructor(gamesService: GamesService) {

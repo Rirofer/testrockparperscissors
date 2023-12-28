@@ -4,13 +4,15 @@ import {GameModule} from "./game/game.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {BrowserModule} from "@angular/platform-browser";
 import {HalFormsResourceAdapter, ResourceAdapter} from "./rest";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     GameModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatToolbarModule
   ],
   providers: [{ provide: ResourceAdapter, useClass: HalFormsResourceAdapter }],
   bootstrap: [AppComponent]

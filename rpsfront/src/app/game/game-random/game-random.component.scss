@@ -1,0 +1,25 @@
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+
+  .game-summary {
+    grid-row: 1;
+  }
+  .rounds {
+    grid-row: 1;
+  }
+  .play-round-form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    grid-row: 2
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.play-random-round-button {
+  margin-left: 10px;
+}

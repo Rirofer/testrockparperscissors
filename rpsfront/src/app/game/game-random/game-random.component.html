@@ -1,12 +1,24 @@
-<div id="play-game">
-  <h2>Current Game</h2>
-  <h3>Started on </h3> {{currentGame?.startedOn}}
-  <h3>Status </h3> {{currentGame?.status}}
-  <h3>Rounds</h3>
-  <app-rounds [rounds]="currentGame?.rounds"></app-rounds>
+<section id="play-game">
+  <div class="game-summary">
+    <h2>Current Game</h2>
+    <p><span class="bold">Started on: </span>{{currentGame?.startedOn | date:'medium'}} </p>
+    <p><span class="bold">Status: </span> {{currentGame?.status}} </p>
+    <p><span class="bold">Winner: </span>{{currentGame?.winner}} </p>
+  </div>
+  <div class="rounds">
+    <p class="bold">Rounds</p>
+    <app-rounds [rounds]="currentGame?.rounds"></app-rounds>
+  </div>
   <br/>
-  <select name="moves" id="moves" (change)="onMoveSelected($event)">
-    <option *ngFor="let option of moveOptions" value="{{option}}">{{ option }}</option>
-  </select>
-  <button (click)="playRandomRound()" [disabled]="!canPlayRound">Play random round</button>
-</div>
+  <div class="play-round-form">
+    <mat-form-field>
+      <mat-label>Player 1 move</mat-label>
+      <mat-select [(value)]="playerOneMove">
+        @for (option of moveOptions; track option) {
+          <mat-option [value]="option">{{option}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="play-random-round-button" (click)="playRandomRound()" [disabled]="!canPlayRound">Play random round</button>
+  </div>
+</section>

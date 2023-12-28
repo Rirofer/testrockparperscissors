@@ -1,22 +1,19 @@
-<table>
-  <thead>
-   <tr>
-     <th>
-        Player 1 move
-     </th>
-     <th>
-       Player 2 move
-     </th>
-     <th>
-       Player 2 random
-     </th>
-   </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let round of rounds">
-      <td>{{round.playerOneMove}}</td>
-      <td>{{round.playerTwoMove}}</td>
-      <td>{{round.randomPlayerTwo}}</td>
-    </tr>
-  </tbody>
+<table mat-table [dataSource]="rounds" class="mat-elevation-z8" *ngIf="rounds">
+  <ng-container matColumnDef="playerOneMove">
+    <th mat-header-cell *matHeaderCellDef> Player 1 move </th>
+    <td mat-cell *matCellDef="let element"> {{element.playerOneMove}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="playerTwoMove">
+    <th mat-header-cell *matHeaderCellDef> Player 2 move  </th>
+    <td mat-cell *matCellDef="let element"> {{element.playerTwoMove}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="randomPlayerTwo">
+    <th mat-header-cell *matHeaderCellDef> Player 2 random  </th>
+    <td mat-cell *matCellDef="let element"> {{element.randomPlayerTwo}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

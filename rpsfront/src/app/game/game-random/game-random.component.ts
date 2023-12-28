@@ -37,10 +37,6 @@ export class GameRandomComponent implements OnInit {
     }
   }
 
-  onMoveSelected(event: any) {
-    this.playerOneMove = event.target.value;
-  }
-
   playRandomRound() {
     if (typeof this.playRandomRoundCommand != 'undefined') {
       this.gamesService.playRandomRound(this.playerOneMove, this.playRandomRoundCommand).subscribe(g => this.setCurrentGame(g));

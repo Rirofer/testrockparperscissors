@@ -9,5 +9,6 @@ import {Round} from "../shared";
 export class RoundsComponent  {
 
   @Input() rounds: Array<Round> | undefined;
+  displayedColumns: string[] = ['playerOneMove', 'playerTwoMove', 'randomPlayerTwo'];
 
 }
