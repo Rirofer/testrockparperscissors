@@ -28,7 +28,7 @@ Although it is a simple application, the following architectural patterns have b
 
 ## Improvements
 
-- Add persistence to the backend
+- Add persistence and transactions to the backend
 - Implement an EventStore to save domain events
 - Implement Outbox pattern to publish events reliably
 - Use Server Sent Events (or WebSockets) to send events from the backend to the frontend
